@@ -1,0 +1,153 @@
+<html>  
+<head>  
+<title>URL Prediction</title> 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+    body {
+         background-image: url('static/bg1.avif'); 
+         background-size: cover;
+         background-attachment: fixed; /* Keeps bg fixed */
+         overflow-y: hidden; /* Hides scrollbar if slightly too big */
+    }
+    label, h1 , h2, p{
+        color: white;
+        font-display: inherit;
+        font-style: italic;
+        font-weight: bold;
+    }
+    label{
+        font-size: 16px; /* Reduced slightly to fit better */
+    }
+    h1{
+        font-size: 40px; /* Reduced slightly */
+        color: white;
+        text-align:center;
+        margin-bottom: 0;
+    }
+    h2{
+        font-size: 25px;
+        color: white;
+        text-align:center;
+        margin-bottom: 15px;
+    }
+    p{
+        font-size: 20px;
+    }
+    #bar a
+    {
+        color: blue;
+    }
+    #nr{
+        margin: 0 auto; /* Centered without huge margins */
+        width: 80%;
+    }
+    #nr label{
+         color: white;
+    }
+    .form-control {
+        height: 35px; /* Compact input height */
+    }
+</style>
+</head>  
+<body > 
+    <nav class="navbar bg-light navbar-expand-lg navbar-red px-10 px-lg-5 py-2 py-lg-0">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="font-size: 20px; margin-right: 50px;">
+                <div class="navbar-nav ms-auto" id="bar">
+                     <a class="nav-link active" aria-current="page" href="/">Home</a>
+                     <a class="nav-link" href="/predict">Prediction</a>
+                     <a class="nav-link" href="/result">Result</a>
+                     <a class="nav-link" href="/performance">Performance</a>
+            </div>
+        </div>
+    </nav>
+
+<form action='/predict' method="post">
+    <div style="margin-top: 20px;">
+        <center>
+            <h1>URL Attacks</h1>
+        </center>
+    </div>
+
+     <div id="nr">
+    <h2>URL Features</h2>
+     {% if error_message %}
+        <p class="error">{{ error_message }}</p>
+     {% endif %}
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            
+            <div class="col-md-5 col-lg-4">
+                <div class="form-group mb-2">
+                    <label for="url_len">Url length</label>
+                    <input type="number" name="url_len" class="form-control">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="letters_count">Letters count</label>
+                    <input type="number" name="letters_count" class="form-control">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="digits_count">Digits count</label>
+                    <input type="number" name="digits_count" class="form-control">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="special_chars_count">Special chars count</label>
+                    <input type="number" name="special_chars_count" class="form-control">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="shortened">Shortened</label>
+                    <input type="number" name="shortened" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-md-5 col-lg-4">
+               <div class="form-group mb-2">
+                   <label for="abnormal_url">Abnormal url</label>
+                   <input type="number" name="abnormal_url" class="form-control">
+               </div>
+               <div class="form-group mb-2">
+                   <label for="secure_http">Secure http</label>
+                   <input type="number" name="secure_http" class="form-control">
+               </div>
+               <div class="form-group mb-2">
+                   <label for="ip_address">Ip_address</label>
+                   <input type="number" name="ip_address" class="form-control">
+               </div>
+               <div class="form-group mb-2">
+                   <label for="url_region">Url region</label>
+                   <input type="number" name="url_region" class="form-control">
+               </div>
+               <div class="form-group mb-2">
+                   <label for="root_domain">Root_domain</label>
+                   <input type="number" name="root_domain" class="form-control">
+               </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-grid gap-2 col-2 mx-auto mt-3">
+        <input type="submit" class="btn btn-primary">
+    </div>
+    </div>
+</form>
+
+    </div>
+    
+   <div style="position: fixed; bottom: 30px; left: 30px;">
+    <button onclick="goBack()" class="btn btn-primary btn-lg"><i class="bi bi-arrow-left-circle-fill fs-30"></i></button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</div>
+</body>  
+</html>
