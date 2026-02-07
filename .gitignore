@@ -1,0 +1,5 @@
+.venv/
+new_env/
+.spyproject/
+.ipynb_checkpoints/
+__pycache__/
